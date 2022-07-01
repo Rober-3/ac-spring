@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Nav Item - Menú Marcas -->
+<li class="nav-item" th:fragment="brands-menu">
+
+	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrands" aria-expanded="true" aria-controls="collapseUtilities">
+		<i class="fas fa-book-open mr-2"></i><span>Marcas</span>
+	</a>
+	
+	<div id="collapseBrands" class="collapse" aria-labelledby="headingBrands" data-parent="#accordionSidebar">
+		<div class="bg-white py-2 collapse-inner rounded">
+			<h6 class="collapse-header">Marcas:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/new_brand}"><i class="fas fa-plus-square mr-2"></i><span>Nueva marca</span></a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/brands}"><i class="fas fa-list mr-2"></i>Lista</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_brands/false}"><i class="fas fa-square mr-2"></i>Con clásicos</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_brands/true}"><i class="far fa-square mr-2"></i>Vacías</a>
+		</div>
+	</div>
+	
+</li>
+
+</html>

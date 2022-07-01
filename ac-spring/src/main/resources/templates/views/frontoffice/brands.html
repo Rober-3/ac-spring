@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/fragments/css-scripts :: css"></head>
+
+<body id="page-top">
+
+	<nav th:replace="views/fragments/navbar-frontoffice :: navbar"></nav>
+	<div th:replace="views/fragments/elements :: alert"></div>
+	
+	<main>
+		<div class="container my-5 d-flex justify-content-center">
+			<div>
+				<h2 class="text-center">Todas A-Z</h2>
+				<div class="row">
+					<div th:each="b: ${brands}" th:unless="${#lists.isEmpty(brands)}">
+						<div class="col my-5 justify-content-center">
+							<div class="card bg-light" style="width: 15rem;">
+								<div class="card-body">
+									<h5 class="card-title font-weight-bold text-center" th:text="${b.name}"></h5>
+									<p class="card-text" th:text="'País: ' + ${b.country.name}"></p>
+									<a th:href="@{'/ac-spring/classics_brand/' + ${b.id}}">Ver clásicos</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+    <div th:replace="views/fragments/elements :: scrollToTop"></div>
+	<div th:replace="views/fragments/css-scripts :: scripts"></div>
+	
+</body>
+</html>

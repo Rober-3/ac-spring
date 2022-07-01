@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/fragments/css-scripts :: css"></head>
+
+<body id="page-top">
+
+	<nav th:replace="views/fragments/navbar-frontoffice :: navbar"></nav>
+	<div th:replace="views/fragments/elements :: alert"></div>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+    
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+               
+               <!-- Begin Page Content -->
+               <div class="container-fluid">
+
+                    <!-- Información del clásico -->
+                    <div class="card shadow mb-4">
+                    
+                    	<div class="card-header py-3 d-flex justify-content-between">
+                        	<h6 class="m-0 font-weight-bold text-primary">Información</h6>
+                        	<a th:href="@{/ac-spring/classics}">
+                        		<i class="fas fa-angle-left mr-2"></i>Lista de clásicos
+                        	</a>
+                        </div>
+                        
+                        <div class="card-body d-flex justify-content-center">
+                        	<div class="foto-tarjeta mr-3">
+								<img th:if="${#strings.length(classic.photo) > 0}"
+									 class="card-img"
+									 th:src="@{'/uploads/cars/' + ${classic.photo}}"
+									 th:alt="'Foto del ' + ${classic.brand.name} + ' ' + ${classic.name}">
+								<a th:href="@{'/uploads/cars/' + ${classic.photo}}" target="_blank" class="card-link text-center">
+									<i class="fas fa-expand"></i>
+								</a>
+                            </div>
+                            <div class="pl-3">
+                            	<h5 class="card-title font-weight-bold text-center" th:text="${classic.name}"></h5>
+                            	<p class="card-text" th:text="'Marca: ' + ${classic.brand.name}"></p>
+								<p class="card-text" th:text="'Año: ' + ${classic.year}"></p>
+								<p class="card-text" th:text="'País: ' + ${classic.brand.country.name}"></p>
+								<p class="card-text" th:text="'Subido por: ' + ${classic.user.username}"></p>
+							</div>
+							
+                        </div>
+                    </div>
+                    <!-- /Información del clásico -->
+				</div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <div th:replace="views/fragments/elements :: scrollToTop"></div>
+    <div th:replace="views/fragments/css-scripts :: scripts"></div>
+
+</body>
+
+</html>

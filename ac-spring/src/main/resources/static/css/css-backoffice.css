@@ -1,0 +1,36 @@
+.foto, .foto-formulario {
+	display: inline-block;
+	width: 22rem;
+	position: relative;
+}
+
+.foto-formulario {
+	height: 14rem;
+}
+
+.img-thumbnail {
+	border-width: 0px;
+	height: auto;
+	max-width: 6rem;
+	padding: 0px;
+}
+ 
+.logo {
+	max-width: 3rem;
+}
+
+.logo-icono {
+	max-width: 1.5rem;
+}
+ 
+.miniatura {
+	max-width: 6rem;
+}
+
+.numero {
+	font-size: 2rem;
+}
+
+.tabla td {
+	vertical-align: middle;
+}

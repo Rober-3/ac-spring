@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+ <!-- Alertas. -->
+<div th:fragment="alert" 
+	 th:class="'alert alert-' + ${class} + ' alert-dismissible fade show nav-item col my-auto text-center'" role="alert">
+	<span th:text="${message}"></span>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<!-- Dropdown - Información del usuario. -->
+<div class="text-sm nav-item dropdown no-arrow" th:fragment="user-information" >
+	<a class="nav-link dropdown-toggle text-secondary" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="mr-2 d-none d-lg-inline small">Has iniciado sesión como
+			<span sec:authentication="name"></span>
+		</span>
+		<img class="img-profile rounded-circle"
+			 th:if="${#strings.length(#authentication.principal.photo) > 0}"
+			 th:src="@{'/uploads/users/' + ${#authentication.principal.photo}}"
+			 alt="Foto del perfil" />
+		<img class="img-profile rounded-circle"
+			 th:if="${#strings.length(#authentication.principal.photo) == 0}"
+			 th:src="@{'/images/sin-foto.png'}"
+			 alt="Sin foto de perfil" />
+	</a>
+	<!-- Dropdown - Información del usuario. -->
+	<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+		<a class="dropdown-item" th:href="@{/ac-spring/backoffice/user/}+${#authentication.principal.id}">
+			<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Mi perfil
+		</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+			<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Cerrar sesión
+		</a>
+	</div>
+</div>
+
+<!-- Modal para el cierre de sesión. -->
+<div th:fragment="logoutModal">
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cerrar sesión</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">¿Deseas cerrar la sesión?</div>
+				<div class="modal-footer">
+					<button class="btn border-secondary text-secondary" type="button" data-dismiss="modal">Cancelar</button>
+					
+					<form name="logoutForm" th:action="@{/logout}" method="post">
+						<a href="javascript: document.logoutForm.submit()" class="btn btn-primary">Cerrar sesión</a>
+						<input type="hidden" value="Sign Out" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<!-- Título y enlace atrás de las vistas de detalles. -->
+<div th:fragment="title-back">
+	<div class="card-header py-3 d-flex justify-content-between">
+		<h6 class="m-0 font-weight-bold text-primary" th:text="${title}"></h6>
+		<a href="javascript: history.go(-1)">
+			<i class="fas fa-angle-left mr-2"></i>Atrás
+		</a>
+	</div>
+</div>
+	
+<!-- Botones de los formularios. -->
+<div th:fragment="form-buttons">
+	<div class="form-floating d-flex justify-content-end py-3">
+		<button class="btn border-secondary text-secondary mr-3" type="button" onClick="parent.location='/ac-spring/backoffice/index'">Cancelar</button>
+		<button type="submit" class="btn btn-success">Guardar</button>
+	</div>
+</div>
+
+<!-- Botón para ir al comienzo de la página. -->
+<div th:fragment="scrollToTop">
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+</div>
+
+</html>

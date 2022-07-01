@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Nav Item - Menú orígenes. -->
+<li class="nav-item" th:fragment="origins-menu">
+
+	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrigins" aria-expanded="true" aria-controls="collapsePages">
+		<i class="fas fa-globe mr-2"></i><span>Orígenes</span>
+	</a>
+	
+	<div id="collapseOrigins" class="collapse" aria-labelledby="headingOrigins" data-parent="#accordionSidebar">
+		<div class="bg-white py-2 collapse-inner rounded">
+			<h6 class="collapse-header">Orígenes:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/new_origin}"><i class="far fa-plus-square mr-2"></i><span>Añadir origen</span></a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/origins}"><i class="fas fa-list mr-2"></i>Lista</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_origins/false}"><i class="fas fa-square mr-2"></i>Con países</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_origins/true}"><i class="far fa-square mr-2"></i>Vacíos</a>
+		</div>
+	</div>
+	
+</li>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:if="${brand}" th:fragment="brand">
+
+	<div class="card shadow mb-4">
+
+		<div th:replace="views/fragments/elements :: title-back"></div>
+
+		<div class="card-body d-flex justify-content-center">
+			<div class="pl-3">
+				<h2 class="card-title font-weight-bold text-center" th:text="${brand.name}"></h2>
+				<p class="card-text" th:text="'País: ' + ${brand.country.name}"></p>
+				<span class="h5 font-weight-bold">Clásicos:</span>
+				<div th:unless="${#lists.isEmpty(brand.classics)}" th:each="c: ${brand.classics}">
+					<a th:href="@{/ac-spring/backoffice/classic/}+${c.id}">
+						<span th:text="${c.name}"></span>
+					</a>
+				</div>
+				<div th:if="${#lists.isEmpty(brand.classics)}">
+					<span>No tiene clásicos guardados.</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-footer d-flex py-3 justify-content-end">
+			<a th:href="@{/ac-spring/backoffice/edit_brand/}+${brand.id}"
+			   class="btn btn-primary btn-sm mr-2">
+				<i class="fas fa-edit mr-2"></i>Editar
+			</a>
+			<a th:if="${#lists.isEmpty(brand.classics)}"
+			   th:href="@{/ac-spring/backoffice/delete_brand/}+${brand.id}"
+			   th:attr="onclick=|confirmar('${brand.name}')|"
+			   class="btn btn-danger btn-sm">
+			   <i class="fas fa-trash mr-2"></i>Borrar
+			</a>
+			<span th:unless="${#lists.isEmpty(brand.classics)}"
+				  class="btn btn-secondary btn-sm disabled"
+				  title="No se puede borrar porque tiene clásicos guardados.">
+				<i class="fas fa-trash mr-2"></i>Borrar
+			</span>
+		</div>
+	</div>
+</div>
+</html>

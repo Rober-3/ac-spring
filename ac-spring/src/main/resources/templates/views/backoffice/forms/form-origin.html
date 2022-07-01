@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:if="${origin}" th:fragment="form-origin">
+
+	<form th:action="@{/ac-spring/backoffice/save_origin}" th:object="${origin}" method="post" class="user">
+	
+		<div class="form-group">
+			<label for="name">Nombre *</label>
+			<input th:field="*{name}"
+				   type="text"
+				   id="name"
+				   class="form-control form-control-sm"
+				   th:errorclass="is-invalid" 
+				   placeholder="Introduce el nombre"
+				   autofocus />
+			<small th:if="#{fields.hasErrors('name')}"
+				   th:errors="*{name}"
+				   class="form-text text-danger"></small>
+		</div>
+		
+		<div th:replace="views/fragments/elements :: form-buttons"></div>
+
+	</form>
+</div>
+</html>

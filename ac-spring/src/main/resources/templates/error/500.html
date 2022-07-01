@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/fragments/css-scripts :: css"></head>
+<body>
+	<div class="container-fluid">
+		<div class="text-center">
+			<h2 th:text="'Error ' + ${status}"></h2>
+			<p th:text="${message}"></p>
+			<p th:text="${cause}"></p>
+			<p>Por favor, ponte en contacto con el administrador.</p>
+			<p>
+				<a th:href="@{/ac-spring/index}">Ir a la página principal</a>
+			</p>
+			<p class="align-self-center"><img th:src="@{/images/500.jpg}" class="quinientos" /></p>
+		</div>
+
+
+	</div>
+	<div th:replace="views/fragments/css-scripts :: scripts"></div>
+</body>
+</html>
+
+
+

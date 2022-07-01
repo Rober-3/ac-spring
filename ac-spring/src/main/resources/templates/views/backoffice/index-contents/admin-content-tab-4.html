@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="tab-4">
+
+	<!-- Orígenes. -->
+	<div class="d-sm-flex">
+		<h1 class="h3 mb-1 text-gray-800">Orígenes</h1>
+	</div>
+	
+	<!-- Content Row -->
+	<div class="row">
+
+		<!-- Total de orígenes. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-info shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase ">Total:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/origins}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total4[0]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-info text-white text-xs">Orígenes guardados en la base de datos.</div>
+			</div>
+		</div>
+		<!-- /Total de orígenes. -->
+
+		<!-- Orígenes con países. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-primary shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase ">Con países:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/empty_origins/false}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total4[1]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-primary text-white text-xs">Orígenes con países guardadas.</div>
+			</div>
+		</div>
+		<!-- /Orígenes con países. -->
+
+		<!-- Orígenes vacíos. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-secondary shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase ">Vacíos:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/empty_origins/true}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total4[2]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-secondary text-white text-xs">Orígenes sin países.</div>
+			</div>
+		</div>
+		<!-- /Orígenes vacíos. -->
+
+	</div>
+	<!-- /Orígenes. -->
+
+</div>
+</html>

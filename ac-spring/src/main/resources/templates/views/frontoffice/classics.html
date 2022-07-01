@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/fragments/css-scripts :: css"></head>
+
+<body id="page-top">
+
+	<nav th:replace="views/fragments/navbar-frontoffice :: navbar"></nav>
+	<div th:replace="views/fragments/elements :: alert"></div>
+	
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+               <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+					<!-- Tabla -->
+                    <div class="card shadow my-4">
+                        <div class="card-header">
+                        	 <div th:if="${originName == 'americano'}">
+								<img th:src="@{/images/encabezado_americanos.png}" class="mx-auto my-5 d-block" />
+							</div>
+							<div th:if="${originName == 'europeo'}">
+								<img th:src="@{/images/encabezado_europeos.png}" class="mx-auto my-5 d-block" />
+							</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped text-center tabla" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Foto</th>
+                                        	<th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Año</th>
+                                            <th>País</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Foto</th>
+                                        	<th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Año</th>
+                                            <th>País</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										<tr th:each="c: ${classics}">
+											<td>
+												<img th:if="${#strings.length(c.photo) > 0}"
+													 class="img-thumbnail"
+													 th:src="@{'/uploads/cars/' + ${c.photo}}"
+													 th:alt="'Foto del ' + ${c.brand.name} + ' ' + ${c.name}">
+											</td>
+											<td th:text="${c.brand.name}"></td>
+											<td th:text="${c.name}"></td>
+											<td th:text="${c.year}"></td>
+											<td th:text="${c.brand.country.name}"></td>
+											<td class="text-center">
+												<a th:href="@{/ac-spring/classic/}+${c.id}">
+													<i class="fas fa-info fa-1x mx-2" title="Detalles"></i>
+												</a>
+											</td>
+										</tr>
+									</tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Tabla -->
+                    
+				</div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <div th:replace="views/fragments/elements :: scrollToTop"></div>
+	<div th:replace="views/fragments/css-scripts :: scripts"></div>
+
+</body>
+
+</html>

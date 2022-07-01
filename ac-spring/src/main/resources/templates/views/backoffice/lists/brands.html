@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:if="${brands}" th:fragment="brands">
+
+	<div class="card shadow mb-4">
+	
+		<div class="card-header py-3 d-flex justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary" th:text="${title}"></h6>
+			<a href="javascript: history.go(-1)">
+				<i class="fas fa-angle-left mr-2"></i>Atrás
+			</a>
+		</div>
+		
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped text-center" id="dataTable">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>País</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>País</th>
+							<th>Acciones</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr th:each="b: ${brands}">
+							<td th:text="${b.id}"></td>
+							<td th:text="${b.name}"></td>
+							<td th:text="${b.country.name}"></td>
+							<td>
+								<a th:href="@{/ac-spring/backoffice/brand/}+${b.id}">
+									<i class="fas fa-info fa-1x mx-2" title="Detalles"></i>
+								</a>
+								<a th:href="@{/ac-spring/backoffice/edit_brand/}+${b.id}">
+									<i class="fas fa-edit fa-1x mx-2 align-middle" title="Editar"></i>
+								</a>
+								<a th:if="${#lists.isEmpty(b.classics)}"
+								   th:href="@{/ac-spring/backoffice/delete_brand/}+${b.id}"
+								   th:attr="onclick=|confirmar('${b.name}')|">
+									<i class="fas fa-trash fa-1x mx-2" title="Borrar"></i>
+								</a>
+								<i th:unless="${#lists.isEmpty(b.classics)}"
+								   class="fas fa-trash fa-1x mx-2"
+								   title="No se puede borrar porque tiene clásicos guardados."></i>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

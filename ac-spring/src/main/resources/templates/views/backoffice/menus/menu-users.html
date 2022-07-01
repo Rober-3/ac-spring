@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Nav Item - Menú usuarios. -->
+<li class="nav-item" th:fragment="users-menu">
+
+	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapsePages">
+		<i class="fas fa-users mr-2"></i><span>Usuarios</span>
+	</a>
+	
+	<div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+		<div class="bg-white py-2 collapse-inner rounded">
+			<h6 class="collapse-header">Usuarios:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/users}"><i class="fas fa-list mr-2"></i>Lista</a>
+		</div>
+	</div>
+
+</li>
+
+</html>

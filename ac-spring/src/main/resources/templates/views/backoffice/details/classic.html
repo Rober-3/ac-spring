@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+ 
+<div th:if="${classic}" th:fragment="classic">
+
+	<div class="card shadow mb-4">
+
+		<div th:replace="views/fragments/elements :: title-back"></div>
+
+		<div class="card-body d-flex justify-content-center">
+
+			<div class="foto border bg-light text-center align-middle">
+				<span th:if="${#strings.length(classic.photo) == 0}">Sin foto</span>
+				<img class="card-img w-100"
+					 th:if="${#strings.length(classic.photo) > 0}"
+					 th:src="@{'/uploads/cars/' + ${classic.photo}}"
+					 th:alt="'Foto del ' + ${classic.brand.name} + ' ' + ${classic.name}" />
+			</div>
+			
+			<div class="pl-3">
+				<h5 class="card-title font-weight-bold text-center" th:text="${classic.name}"></h5>
+				<p class="card-text" th:text="'Marca: ' + ${classic.brand.name}"></p>
+				<p class="card-text" th:text="'País: ' + ${classic.brand.country.name}"></p>
+				<p class="card-text" th:text="'Año: ' + ${classic.year}"></p>
+				<p class="card-text" sec:authorize="hasRole('ROLE_ADMIN')"
+									 th:text="'Subido por: ' + ${classic.user.username}"></p>
+				<!-- status se recibe desde ClassicMessages. -->
+				<span sec:authorize="hasRole('ROLE_ADMIN')"
+					  th:class="${classBadge}"
+					  th:text="${status}"></span>
+			</div>
+		</div>
+
+		<div class="card-footer d-flex py-3 justify-content-end">
+			<a th:href="@{/ac-spring/backoffice/edit_classic/}+${classic.id}"
+			   class="btn btn-primary btn-sm mr-2">
+				<i class="fas fa-edit mr-2"></i>Editar
+			</a>
+			<a th:href="@{/ac-spring/backoffice/delete_classic/}+${classic.id}"
+			   th:attr="onclick=|confirmar('${classic.brand.name} ' + '${classic.name}')|"
+			   class="btn btn-danger btn-sm">
+				<i class="fas fa-trash mr-2"></i>Borrar
+			</a>
+		</div>
+	</div>
+</div>
+</html>

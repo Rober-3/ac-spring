@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Sidebar -->
+<ul th:fragment="sidebar" class="navbar-nav bg-gray-600 sidebar sidebar-dark accordion" id="accordionSidebar">
+	
+	<a class="sidebar-brand d-flex align-items-center justify-content-center">
+		<div class="sidebar-brand-text mx-3">Mi panel</div>
+	</a>
+
+	<!-- Divisor. -->
+	<hr class="sidebar-divider my-0">
+
+	<!-- Nav Item - Dashboard -->
+	<li class="nav-item">
+		<a class="nav-link" th:href="@{/ac-spring/index}">
+			<img th:src="@{/images/logo.png}" class="logo-icono mr-2" />
+			<span>Inicio del sitio</span>
+		</a>
+	</li>
+	
+	<li class="nav-item">
+		<a class="nav-link" th:href="@{/ac-spring/backoffice/index}">
+			<i class="fas fa-power-off mr-2"></i>
+			<span>Mi panel</span>
+		</a>
+	</li>
+
+	<!-- Divisor. -->
+	<hr class="sidebar-divider">
+
+	<li th:replace="views/backoffice/menus/menu-classics :: classics-menu"></li>
+	
+	<li sec:authorize="hasRole('ROLE_USER')" th:replace="views/backoffice/menus/menu-classics :: new-classic"></li>
+	
+	<li sec:authorize="hasRole('ROLE_ADMIN')" th:replace="views/backoffice/menus/menu-brands :: brands-menu"></li>
+	
+	<li sec:authorize="hasRole('ROLE_ADMIN')" th:replace="views/backoffice/menus/menu-countries :: countries-menu"></li>
+	
+	<li sec:authorize="hasRole('ROLE_ADMIN')" th:replace="views/backoffice/menus/menu-origins :: origins-menu"></li>
+	
+	<li sec:authorize="hasRole('ROLE_ADMIN')" th:replace="views/backoffice/menus/menu-users :: users-menu"></li>
+	
+	<!-- Divisor. -->
+	<hr class="sidebar-divider d-none d-md-block">
+	
+	<!-- Botón para ocultar la barra lateral. -->
+	<div class="text-center d-none d-md-inline">
+		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+	</div>
+	 
+</ul>
+<!-- End of Sidebar -->
+
+<!-- Topbar -->
+<nav th:fragment="topbar" class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
+
+	<!-- Topbar Navbar -->
+	<div class="navbar-nav w-100 justify-content-end">
+		
+		<div th:replace="views/fragments/elements :: alert"></div>
+		
+		<!-- Línea de división vertical. -->
+		<div class="topbar-divider d-none d-sm-block"></div>
+
+		<div th:replace="views/fragments/elements :: user-information"></div>
+
+	</div>
+</nav>
+<!-- End of Topbar -->
+
+</html>

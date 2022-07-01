@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:if="${users}" th:fragment="users">
+
+	<div class="card shadow mb-4">
+	
+		<div class="card-header py-3 d-flex justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary" th:text="${title}"></h6>
+			<a href="javascript: history.go(-1)">
+				<i class="fas fa-angle-left mr-2"></i>Atrás
+			</a>
+		</div>
+		
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped text-center tabla" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Foto</th>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Roles</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Foto</th>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Roles</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr th:each="u: ${users}">
+							<td>
+								<a th:if="${#strings.length(u.photo) > 0}"
+								   th:href="@{'/uploads/users/' + ${u.photo}}" target="_blank" class="card-link">
+								   <img class="img-thumbnail"
+										th:src="@{'/uploads/users/' + ${u.photo}}"
+										th:alt="'Foto de ' + ${u.username}" />
+								</a>
+								<img th:if="${#strings.length(u.photo) == 0}"
+									 class="img-thumbnail"
+									 th:src="@{'/images/sin-foto.png'}"
+								     alt="Sin foto de perfil" />
+							</td>
+							<td th:text="${u.id}"></td>
+							<td th:text="${u.username}"></td>
+							<td th:each="r: ${u.roles}">
+								<p th:text="${r.name}"></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

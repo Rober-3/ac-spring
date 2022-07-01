@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Barra de navegación -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light border-bottom row px-4">
+	
+	<div class="collapse navbar-collapse" id="navbarTogglerDemo02 col">
+	
+		<a th:href="@{/ac-spring/index}"> <img th:src="@{/images/logo.png}" class="logo" /></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Enlaces. -->
+		<div class="navbar-nav mt-lg-0 pr-3">
+
+			<div class="nav-item">
+				<div class="dropdown">
+					<button class="btn dropdown-toggle bg-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clásicos</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" th:href="@{/ac-spring/classics}">Todos</a>
+						<div class="dropdown-divider"></div>
+
+						<a class="dropdown-item" th:href="@{/ac-spring/classics_origin/americano}">Americanos</a>
+						<a class="dropdown-item" th:href="@{/ac-spring/classics_origin/europeo}">Europeos</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="nav-item">
+				<div class="dropdown">
+					<button class="btn dropdown-toggle bg-transparent" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marcas</button>
+
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" th:href="@{/ac-spring/brands}">Todas</a>
+						<div class="dropdown-divider"></div>
+						<div th:each="b: ${brands}" th:unless="${#lists.isEmpty(brands)}">
+							<a class="dropdown-item" th:href="@{/ac-spring/brand/} + ${b.id}" th:text="${b.name}"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Enlaces. -->
+		
+		<div class="navbar px-2 py-0 container-fluid justify-content-end">
+		
+	   		<div th:replace="views/fragments/elements :: alert"></div>
+
+			<div class="nav-item col-md-auto" sec:authorize="!isAuthenticated()">
+				<a class="nav-link text-secondary" th:href="@{/ac-spring/login}">Iniciar sesión</a>
+			</div>
+			
+			<div class="nav-item" sec:authorize="isAuthenticated()">
+				<div class="mx-auto" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+					<a class="nav-link text-secondary" th:href="@{/ac-spring/backoffice/index}">
+						<i class="fas fa-power-off"></i>
+						<span class="ml-1">Mi panel</span>
+					</a>
+				</div>
+			</div>
+				
+			<div class="nav-item" sec:authorize="isAuthenticated()" th:replace="views/fragments/elements :: user-information"></div>
+			
+		</div>
+	</div>
+</nav>
+</html>

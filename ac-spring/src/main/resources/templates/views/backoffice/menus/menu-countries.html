@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Nav Item - Menú países. -->
+<li class="nav-item" th:fragment="countries-menu">
+
+	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCountries" aria-expanded="true" aria-controls="collapsePages">
+		<i class="far fa-flag mr-2"></i><span>Países</span>
+	</a>
+	
+	<div id="collapseCountries" class="collapse" aria-labelledby="headingCountries" data-parent="#accordionSidebar">
+		<div class="bg-white py-2 collapse-inner rounded">
+			<h6 class="collapse-header">Países:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/new_country}"><i class="far fa-plus-square mr-2"></i><span>Añadir país</span></a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/countries}"><i class="fas fa-list mr-2"></i>Lista</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_countries/false}"><i class="fas fa-square mr-2"></i>Con marcas</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/empty_countries/true}"><i class="far fa-square mr-2"></i>Vacíos</a>
+		</div>
+	</div>
+	
+</li>
+
+</html>

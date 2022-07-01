@@ -1,0 +1,107 @@
+.formulario {
+	height: auto;
+	width: 500px;
+}
+
+.foto-tarjeta {
+	display: inline-block;
+	width: auto;
+	position: relative;
+}
+
+.img-thumbnail {
+	border-width: 0px;
+	height: auto;
+	max-width: 6rem;
+	padding: 0px;
+}
+
+.logo {
+	max-width: 3rem;
+}
+
+.navbar {
+	border-width: 2px !important;
+}
+
+.sin-foto{
+	display: inline-block;
+	width: 25%;
+	position: relative;
+}
+
+.tabla td {
+	vertical-align: middle;
+}
+
+/* Foto de perfil de la barra de navegación. */
+.img-profile {
+	max-height: 2rem;
+	width: 2rem;
+}
+
+/* Carrusel de imágenes de la página principal. */
+
+.carousel.carousel-fade .carousel-item {
+    display: block;
+    opacity: 0;
+    transition: opacity ease-out 1.7s;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+    opacity: 1 !important;
+}
+
+.carousel.carousel-fade .carousel-item:first-child {
+    top: auto;
+    position: relative;
+    transition: opacity ease-out 1.7s;
+}
+
+.carousel.carousel-fade .carousel-item:second-child {
+    top: auto;
+    position: relative;
+    transition: opacity ease-out 1.7s;
+}
+
+.carousel-item .img-fluid {
+    margin: 0 auto;
+}
+
+.carousel img {
+    filter: alpha(opacity=50);
+}
+
+
+/* Páginas de error. */
+
+.cuatrocientostres {
+	background-image: url("/images/403.jpeg");
+}
+
+.cuatrocientoscuatro {
+	background-image: url("/images/404.jpeg");
+}
+
+.cuatrocientostres, .cuatrocientoscuatro {
+	background-size: cover;
+	color: white;
+	font-size: 3rem;
+}
+
+.cuatrocientostres h1, .cuatrocientoscuatro h1{
+	font-size: 7rem;
+}
+
+.cuatrocientostres a, .cuatrocientoscuatro a{
+	color: yellow;
+}
+
+.quinientos {
+ 	width: 40%;
+}
+
+.texto{
+	text-shadow: -1px -1px 1px black, 1px 1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
+}
+	

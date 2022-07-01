@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="user-content">
+
+	<div class="d-sm-flex">
+		<h1 class="h3 mb-1 text-gray-800">Mis clásicos</h1>
+	</div>
+	
+	<!-- Content Row -->
+	<div class="row">
+
+		<!-- Total de clásicos. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-info shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase ">Total:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/classics}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total[0]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-info text-white text-xs">Clásicos registrados por mí.</div>
+			</div>
+		</div>
+		<!-- /Total de clásicos. -->
+
+		<!-- Clásicos publicados. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase">Mis aprobados:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/classics(approved=true)}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total[1]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-success text-white text-xs">Mis clásicos publicados.</div>
+			</div>
+		</div>
+		<!-- /Clásicos publicados. -->
+
+		<!-- Clásicos pendientes. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-warning shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase">Mis pendientes:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1"
+								   th:href="@{/ac-spring/backoffice/classics(approved=false)}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text="${total[2]}"></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-warning text-white text-xs">Mis clásicos pendientes de aprobación.</div>
+			</div>
+		</div>
+		<!-- /Clásicos pendientes. -->
+
+	</div>
+	<!-- /Content Row -->
+</div>
+</html>

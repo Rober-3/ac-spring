@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:if="${classics}" th:fragment="classics">
+
+	<div class="card shadow mb-4">
+	
+		<div class="card-header py-3 d-flex justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary" th:text="${title}"></h6>
+			<a href="javascript: history.go(-1)">
+				<i class="fas fa-angle-left mr-2"></i>Atrás
+			</a>
+		</div>
+		
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped text-center tabla" id="dataTable">
+					<thead>
+						<tr>
+							<th>Foto</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Id</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Año</th>
+							<th>País</th>
+							<th>Acciones</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Estado</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Foto</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Id</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Año</th>
+							<th>País</th>
+							<th>Acciones</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Estado</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr th:each="c: ${classics}" th:class="${!c.approved && !c.deleted} ?'table-warning':(${c.deleted} ?'table-danger' :'')">
+							<td>
+								<a th:href="@{'/uploads/cars/' + ${c.photo}}" target="_blank" class="card-link">
+									<img th:if="${#strings.length(c.photo) > 0}"
+										 class="img-thumbnail"
+										 th:src="@{'/uploads/cars/' + ${c.photo}}"
+										 th:alt="'Foto del ' + ${c.brand.name} + ' ' + ${c.name}" />
+								</a>
+								<p th:if="${c.photo == ''}">Sin foto</p>
+							</td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${c.id}"></td>
+							<td th:text="${c.brand.name}"></td>
+							<td th:text="${c.name}"></td>
+							<td th:text="${c.year}"></td>
+							<td th:text="${c.brand.country.name}"></td>
+							<td>
+								<a th:href="@{/ac-spring/backoffice/classic/}+${c.id}">
+									<i class="fas fa-info fa-1x mx-2" title="Detalles"></i>
+								</a> 
+								<a th:href="@{/ac-spring/backoffice/edit_classic/}+${c.id}">
+									<i class="fas fa-edit fa-1x mx-2" title="Editar"></i>
+								</a>
+								<a th:href="@{/ac-spring/backoffice/delete_classic/}+${c.id}"
+								   th:attr="onclick=|confirmar('${c.brand.name} ' + '${c.name}')|">
+									<i class="fas fa-trash fa-1x mx-2" title="Borrar"></i>
+								</a>
+							</td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')">
+								<span th:if="${c.approved && !c.deleted}" class="badge bg-success text-white">Aprobado</span>
+								<span th:if="${c.deleted}" class="badge bg-danger text-white">Eliminado</span>
+								<a th:if="${!c.approved && !c.deleted}"
+								   th:href="@{/ac-spring/backoffice/approve_classic/}+${c.id}"
+								   class="btn btn-warning btn-sm border border-white"
+								   role="button" data-bs-toggle="button">Aprobar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

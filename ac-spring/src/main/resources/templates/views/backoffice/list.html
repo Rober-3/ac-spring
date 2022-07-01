@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="views/fragments/css-scripts :: css"></head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <ul th:replace="views/fragments/navbar-backoffice :: sidebar"></ul>
+        
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+			
+               <div th:replace="views/fragments/navbar-backoffice :: topbar"></div>
+               
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <div th:replace="views/backoffice/lists/classics :: classics"></div>
+					<div th:replace="views/backoffice/lists/brands :: brands"></div>
+					<div th:replace="views/backoffice/lists/countries :: countries"></div>
+					<div th:replace="views/backoffice/lists/origins :: origins"></div>
+					<div th:replace="views/backoffice/lists/users :: users"></div>
+                    
+				</div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <div th:replace="views/fragments/elements :: scrollToTop"></div>
+    <div th:replace="views/fragments/elements :: logoutModal"></div>
+    <div th:replace="views/fragments/css-scripts :: scripts"></div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="admin-content">
+
+	<ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+
+		<li class="nav-item">
+			<a class="nav-link active" id="classics-tab" data-toggle="tab" href="#classics"
+			   role="tab" aria-controls="classics" aria-selected="true">Clásicos</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="brands-tab" data-toggle="tab" href="#brands"
+			   role="tab" aria-controls="brands" aria-selected="true">Marcas</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="countries-tab" data-toggle="tab" href="#countries"
+			   role="tab" aria-controls="countries" aria-selected="false">Países</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="origins-tab" data-toggle="tab" href="#origins"
+			   role="tab" aria-controls="origins" aria-selected="false">Orígenes</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="users-tab" data-toggle="tab" href="#users"
+			   role="tab" aria-controls="users" aria-selected="false">Usuarios</a>
+		</li>
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="classics" role="tabpanel" aria-labelledby="classics-tab">
+			<div th:replace="views/backoffice/index-contents/admin-content-tab-1 :: tab-1"></div>
+		</div>
+		<div class="tab-pane fade" id="brands" role="tabpanel" aria-labelledby="brands-tab">
+			<div th:replace="views/backoffice/index-contents/admin-content-tab-2 :: tab-2"></div>
+		</div>
+		<div class="tab-pane fade" id="countries" role="tabpanel" aria-labelledby="countries-tab">
+			<div th:replace="views/backoffice/index-contents/admin-content-tab-3 :: tab-3"></div>
+		</div>
+		<div class="tab-pane fade" id="origins" role="tabpanel" aria-labelledby="origins-tab">
+			<div th:replace="views/backoffice/index-contents/admin-content-tab-4 :: tab-4"></div>
+		</div>
+		<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+			<div th:replace="views/backoffice/index-contents/admin-content-tab-5 :: tab-5"></div>
+		</div>
+	</div>
+
+</div>
+
+</html>

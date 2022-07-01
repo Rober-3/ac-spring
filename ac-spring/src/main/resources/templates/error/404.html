@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/fragments/css-scripts :: css"></head>
+</head>
+<body class="cuatrocientoscuatro">
+	<div class="text-center font-weight-bold">
+		<br><br>
+		<h1>404</h1>
+		<p>No existe la página que intentas cargar.</p>
+		<p>
+			<a th:href="@{/ac-spring/index}">Ir a la página principal</a>
+		</p>
+	</div>
+	<div th:replace="views/fragments/css-scripts :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="tab-5">
+
+	<!-- Usuarios. -->
+	<div class="d-sm-flex">
+		<h1 class="h3 mb-1 text-gray-800">Usuarios</h1>
+	</div>
+	
+	<!-- Content Row -->
+	<div class="row">
+		<!-- Total de usuarios. -->
+		<div class="col-xl-3 col-md-6 mb-4">
+			<div class="card bg-info shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="font-weight-bold text-white text-uppercase ">Total:</div>
+							<div class="font-weight-bold">
+								<a class="text-xs text-white stretched-link mr-1" th:href="@{/ac-spring/backoffice/users}">Ver detalles</a>
+							</div>
+						</div>
+						<div class="col-auto text-white">
+							<span class="numero" th:text=${total5}></span>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer bg-info text-white text-xs">Usuarios almacenados en la base de datos.</div>
+			</div>
+		</div>
+		<!-- /Total de usuarios. -->
+	</div>
+	<!-- /Usuarios. -->
+	
+</div>
+</html>

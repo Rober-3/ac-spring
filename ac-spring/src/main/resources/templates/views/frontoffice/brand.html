@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="views/fragments/css-scripts :: css"></head>
+
+<body id="page-top">
+
+	<nav th:replace="views/fragments/navbar-frontoffice :: navbar"></nav>
+	<div th:replace="views/fragments/elements :: alert"></div>
+	
+	<main>
+		<div class="container my-5 d-flex justify-content-center">
+			<div>
+				<h2 class="text-center" th:text="${brand.name}"></h2>
+				<div th:unless="${#lists.isEmpty(brand.classics)}" class="row">
+					<div th:each="c: ${brand.classics}" th:if="${c.approved && !c.deleted}" class="col my-5 justify-content-center">
+						<div class="card bg-light mb-5 mx-auto" style="max-width: 18rem; height: 27rem;">
+							<div class="foto-tarjeta">
+								<a th:href="@{'/uploads/cars/' + ${c.photo}}" target="_blank" class="card-link text-center">
+									<img th:if="${#strings.length(c.photo) > 0}"
+										 class="card-img"
+										 th:src="@{'/uploads/cars/' + ${c.photo}}"
+										 th:alt="'Foto del ' + ${c.brand.name} + ' ' + ${c.name}">
+								</a>
+							</div>
+							<div class="card-body mb-3 align-items-end">
+								<h5 class="card-title font-weight-bold text-center" th:text="${c.name}"></h5>
+								<p class="card-text" th:text="'Marca: ' + ${c.brand.name}"></p>
+								<p class="card-text" th:text="'Año: ' + ${c.year}"></p>
+								<p class="card-text" th:text="'País: ' + ${c.brand.country.name}"></p>
+								<p class="card-text" th:text="'Subido por: ' + ${c.user.username}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<div th:replace="views/fragments/elements :: scrollToTop"></div>
+	<div th:replace="views/fragments/css-scripts :: scripts"></div>
+	
+</body>
+</html>

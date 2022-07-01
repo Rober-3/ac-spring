@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Nav Item - Menú Clásicos -->
+<li class="nav-item" th:fragment="classics-menu">
+
+	<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClassics" aria-expanded="true" aria-controls="collapseTwo">
+		<i class="fas fa-car mr-2"></i><span>Clásicos</span>
+	</a>
+
+	<div id="collapseClassics" class="collapse" aria-labelledby="headingClassics" data-parent="#accordionSidebar">
+
+		<div class="bg-white py-2 collapse-inner rounded" sec:authorize="hasRole('ROLE_ADMIN')">
+			<h6 class="collapse-header">Clásicos:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/new_classic}"><i class="fas fa-plus-square mr-2"></i><span>Nuevo clásico</span></a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics}"><i class="fas fa-list mr-2"></i>Lista</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_status(approved=true,deleted=false)}"><i class="far fa-check-square mr-2"></i>Aprobados</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_status(approved=false,deleted=false)}"><i class="fas fa-exclamation-circle mr-2"></i>Pendientes</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_status(deleted=true)}"><i class="fas fa-trash-alt mr-2"></i>Borrados</a>
+		</div>
+
+		<div class="bg-white py-2 collapse-inner rounded" sec:authorize="hasRole('ROLE_USER')">
+			<h6 class="collapse-header">Mis clásicos:</h6>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics}"><i class="fas fa-list mr-2"></i>Todos mis clásicos</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics(approved=true)}"><i class="far fa-check-square mr-2"></i>Mis publicados</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics(approved=false)}"><i class="fas fa-exclamation-circle mr-2"></i>Mis pendientes</a>
+		
+			<!-- 
+			
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_user(id=${#authentication.principal.id})}"><i class="fas fa-list mr-2"></i>Todos mis clásicos</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_user(id=${#authentication.principal.id}, approved=true)}"><i class="far fa-check-square mr-2"></i>Mis publicados</a>
+			<a class="collapse-item" th:href="@{/ac-spring/backoffice/classics_user(id=${#authentication.principal.id}, approved=false)}"><i class="fas fa-exclamation-circle mr-2"></i>Mis pendientes</a>
+			
+			 -->
+		
+		</div>
+
+	</div>
+</li>
+
+<!-- Nav Item - Insertar clásico. -->
+<li class="nav-item" th:fragment="new-classic">
+	<a class="nav-link" th:href="@{/ac-spring/backoffice/new_classic}"><i class="fas fa-plus-square mr-2"></i><span>Nuevo clásico</span></a>
+</li>
+
+</html>
